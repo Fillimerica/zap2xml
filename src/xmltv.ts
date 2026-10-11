@@ -97,10 +97,12 @@ function toDdProgid(rawId: string | undefined | null): string | null {
 // TF 10/2025 Impement an internal deepStrictEqual function to compare to objects.
 // Helper to compare two objects.
 
-function isIdentical(obj1: any, obj2: any): boolean {
+// TF 10/2026 Replaced 'any' with 'unknown' to satisfy the github linter
+// removed the unused error variable reference from the catch clause
+function isIdentical(obj1: unknown, obj2: unknown): boolean {
   try {
     assert.deepStrictEqual(obj1,obj2);
-  } catch(error) {
+  } catch {
     return false
   }
 return true
@@ -172,12 +174,13 @@ export function buildProgramsXml(data: GridApiResponse): string {
     );
 // TF 10/2025 Impement duplicate checking and skip duplicate entries.
 
-    //for (const event of sortedEvents) {
+// TF 10/2026 Changed 'let' to 'const' for event and prevent since they
+// remain constant during each iteration of the for loop. (Linter error)
     for (let i=0; i<sortedEvents.length; i++) {
-      let event = sortedEvents[i]!;
+      const event = sortedEvents[i]!;
 
       if (i>0) {
-        let pevent = sortedEvents[(i-1)]!;
+        const pevent = sortedEvents[(i-1)]!;
         if (isIdentical(event, pevent)) {
           continue
         }
