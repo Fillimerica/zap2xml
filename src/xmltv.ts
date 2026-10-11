@@ -242,15 +242,17 @@ export function buildProgramsXml(data: GridApiResponse): string {
         xml += `    <length units="minutes">${escapeXml(event.duration)}</length>\n`;
       }
 
+// TF 10/2026 Updated event.thumbnail url to working url. (zpmc)
       if (event.thumbnail) {
         const src = event.thumbnail.startsWith("http")
           ? event.thumbnail
-          : "https://emby.tmsimg.com/assets/" + event.thumbnail + ".jpg";
+          : "https://zpmc.tmsimg.com/assets/" + event.thumbnail + ".jpg";
         xml += `    <icon src="${escapeXml(src)}" />\n`;
       }
 
+// TF 10/2026 Updated encodedUrl link to version that still works.
       if (event.program.seriesId && (event.program as any).tmsId) {
-        const encodedUrl = `https://tvlistings.gracenote.com//overview.html?programSeriesId=${event.program.seriesId}&amp;tmsId=${(event.program as any).tmsId}`;
+        const encodedUrl = `https://tvlistings.gracenote.com/overview-affiliates.html?programSeriesId=${event.program.seriesId}&tmsId=${(event.program as any).tmsId}&aid=antennatv`;
         xml += `    <url>${encodedUrl}</url>\n`;
       }
 
