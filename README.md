@@ -10,6 +10,10 @@ I also *somewhat* maintain a version of the original in the [historical-perl bra
 
 # Recent updates
 
+# (2026-10-15)
+
+* Updated the url bases for both the show icon jpeg images and the show link on tvlistings.gracenote.com
+
 # (2025-08-20)
 
 * Changed default Sort option to the Channel Number in Lineup if available
