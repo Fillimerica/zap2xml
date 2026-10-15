@@ -252,7 +252,7 @@ export function buildProgramsXml(data: GridApiResponse): string {
 
 // TF 10/2026 Updated encodedUrl link to version that still works.
       if (event.program.seriesId && (event.program as any).tmsId) {
-        const encodedUrl = `https://tvlistings.gracenote.com/overview-affiliates.html?programSeriesId=${event.program.seriesId}&tmsId=${(event.program as any).tmsId}&aid=antennatv`;
+        const encodedUrl = `https://tvlistings.gracenote.com/overview-affiliates.html?programSeriesId=${event.program.seriesId}&amp;tmsId=${(event.program as any).tmsId}&amp;aid=antennatv`;
         xml += `    <url>${encodedUrl}</url>\n`;
       }
 
